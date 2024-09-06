@@ -1,0 +1,261 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj8cmgs8k786s"]
+
+[ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_eua0o"]
+[ext_resource type="Script" path="res://scenes/menu/options.gd" id="2_p3utg"]
+[ext_resource type="AudioStream" uid="uid://ctpddn4np4oo" path="res://assets/audio/brick_hit.ogg" id="3_6anpj"]
+[ext_resource type="AudioStream" uid="uid://bpnnv6okvdu4m" path="res://assets/audio/level_1.ogg" id="4_phpiv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ya7k"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_eua0o")
+script = ExtResource("2_p3utg")
+
+[node name="AudioPlayerSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6anpj")
+volume_db = -22.0
+bus = &"SFX"
+parameters/looping = true
+
+[node name="AudioPlayerBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_phpiv")
+volume_db = -22.0
+bus = &"BGM"
+parameters/looping = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0786632, 0.0354703, 0.0685073, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SoundTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound"
+
+[node name="Separator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0ya7k")
+
+[node name="MasterOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MasterOption"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer/MasterOption"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MasterOption"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.05
+value = 100.0
+rounded = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MasterOption"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -5
+
+[node name="MasterVolumeString" type="Label" parent="MarginContainer/VBoxContainer/MasterOption/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "100%"
+
+[node name="BGMOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/BGMOption"]
+layout_mode = 2
+text = "Music volume"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer/BGMOption"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BGMSlider" type="HSlider" parent="MarginContainer/VBoxContainer/BGMOption"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+rounded = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/BGMOption"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -5
+
+[node name="BgmVolumeString" type="Label" parent="MarginContainer/VBoxContainer/BGMOption/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "100%"
+
+[node name="SFXOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXOption"]
+layout_mode = 2
+text = "Sound Effect volume"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer/SFXOption"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/SFXOption"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+value = 20.0
+rounded = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/SFXOption"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = -5
+
+[node name="SFXVolumeString" type="Label" parent="MarginContainer/VBoxContainer/SFXOption/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "100%"
+
+[node name="Separator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0ya7k")
+
+[node name="Controls" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controls
+"
+
+[node name="Separator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0ya7k")
+
+[node name="MoveLeft" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/MoveLeft"]
+layout_mode = 2
+text = "Move Left"
+
+[node name="Container2" type="Container" parent="MarginContainer/VBoxContainer/MoveLeft"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Alias" type="Label" parent="MarginContainer/VBoxContainer/MoveLeft"]
+layout_mode = 2
+text = "A / Arrow Left"
+
+[node name="MoveRight" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/MoveRight"]
+layout_mode = 2
+text = "Move Right"
+
+[node name="Container2" type="Container" parent="MarginContainer/VBoxContainer/MoveRight"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Alias" type="Label" parent="MarginContainer/VBoxContainer/MoveRight"]
+layout_mode = 2
+text = "D / Arrow Right"
+
+[node name="Pause" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Container2" type="Container" parent="MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Alias" type="Label" parent="MarginContainer/VBoxContainer/Pause"]
+layout_mode = 2
+text = "ESC"
+
+[node name="StartRound" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/StartRound"]
+layout_mode = 2
+text = "Start Round"
+
+[node name="Container2" type="Container" parent="MarginContainer/VBoxContainer/StartRound"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Alias" type="Label" parent="MarginContainer/VBoxContainer/StartRound"]
+layout_mode = 2
+text = "<SPACE>"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back
+"
+
+[node name="Container" type="Container" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Save
+"
+
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/MasterOption/MasterSlider" to="." method="bgm_drag_ended"]
+[connection signal="drag_started" from="MarginContainer/VBoxContainer/MasterOption/MasterSlider" to="." method="bgm_drag_started"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MasterOption/MasterSlider" to="." method="update_master_volume"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/BGMOption/BGMSlider" to="." method="bgm_drag_ended"]
+[connection signal="drag_started" from="MarginContainer/VBoxContainer/BGMOption/BGMSlider" to="." method="bgm_drag_started"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/BGMOption/BGMSlider" to="." method="update_bgm_volume"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/SFXOption/SFXSlider" to="." method="sfx_drag_ended"]
+[connection signal="drag_started" from="MarginContainer/VBoxContainer/SFXOption/SFXSlider" to="." method="sfx_drag_started"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SFXOption/SFXSlider" to="." method="update_sfx_volume"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Back" to="." method="goto_main_menu"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Save" to="." method="save"]

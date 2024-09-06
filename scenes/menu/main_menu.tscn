@@ -102,5 +102,6 @@ bus = &"BGM"
 parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Start" to="." method="start"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Options" to="." method="goto_options"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Credits" to="." method="show_credits"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/Exit" to="." method="quit"]

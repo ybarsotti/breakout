@@ -16,3 +16,8 @@ func start() -> void:
 
 func show_credits() -> void:
 	pass # Replace with function body.
+
+
+func goto_options() -> void:
+	bgm.stop()
+	get_tree().change_scene_to_file("res://scenes/menu/options.tscn")

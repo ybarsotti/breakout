@@ -26,7 +26,7 @@ debug_color = Color(0.949392, 0.0740377, 0.531759, 0.42)
 scale = Vector2(0.45, 0.45)
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]
-volume_db = -22.486
+volume_db = -22.0
 bus = &"SFX"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="missed"]
