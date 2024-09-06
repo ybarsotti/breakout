@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqayv5rhy02gg"]
+
+[ext_resource type="Script" path="res://scenes/game/brick.gd" id="1_6yjqp"]
+[ext_resource type="Texture2D" uid="uid://dh0f5cbsu5ov" path="res://assets/sprites/breakout_pieces.png" id="1_n7k2n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbxy3"]
+size = Vector2(32, 16)
+
+[node name="Brick" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_6yjqp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dbxy3")
+debug_color = Color(0.960433, 0, 0.516057, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n7k2n")
+region_enabled = true
+region_rect = Rect2(48, 8, 32, 16)

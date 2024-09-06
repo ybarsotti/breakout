@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://hqvl0lathj28"]
+
+[ext_resource type="Texture2D" uid="uid://dh0f5cbsu5ov" path="res://assets/sprites/breakout_pieces.png" id="1_08ody"]
+[ext_resource type="Script" path="res://scenes/game/ball.gd" id="1_wyf15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cjat6"]
+radius = 5.0
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_wyf15")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_08ody")
+region_enabled = true
+region_rect = Rect2(57, 136, 8, 8)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cjat6")
+debug_color = Color(0.949392, 0.0740377, 0.531759, 0.42)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.45, 0.45)
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+volume_db = -22.486
+bus = &"SFX"
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="missed"]

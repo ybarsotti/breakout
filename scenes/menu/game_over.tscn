@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmp3tufcdsesi"]
+
+[ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_b62on"]
+[ext_resource type="Script" path="res://scenes/menu/game_over.gd" id="1_v1dlv"]
+
+[node name="GameOver" type="CanvasLayer"]
+layer = 15
+script = ExtResource("1_v1dlv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.211765, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="GameOverLbl" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_b62on")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="HighScore" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("1_b62on")
+text = "HighScore: "
+
+[node name="MainMenuBtn" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_b62on")
+text = "Main menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuBtn" to="." method="to_main_menu"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://crp3fgp8lfv2y"]
+
+[ext_resource type="PackedScene" uid="uid://dtn5jrolicgq" path="res://scenes/game/wall.tscn" id="1_7kxqp"]
+[ext_resource type="Texture2D" uid="uid://cnle183t0nx08" path="res://assets/sprites/space_bg (2 frames) (64 x 64).png" id="1_fof8y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rvhda"]
+
+[node name="BaseScenario" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("1_fof8y")
+stretch_mode = 1
+
+[node name="Wall_L" parent="." instance=ExtResource("1_7kxqp")]
+
+[node name="Wall_R" parent="." instance=ExtResource("1_7kxqp")]
+position = Vector2(720, 16)
+physics_material_override = SubResource("PhysicsMaterial_rvhda")
+
+[node name="Ceiling" parent="." instance=ExtResource("1_7kxqp")]
+position = Vector2(704, 8)
+rotation = 1.5708
+scale = Vector2(1, 1.55)

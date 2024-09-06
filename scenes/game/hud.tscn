@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo7aoljp7u330"]
+
+[ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_elwtb"]
+[ext_resource type="Script" path="res://scenes/game/hud.gd" id="1_fy771"]
+[ext_resource type="PackedScene" uid="uid://bal627jw2q1fk" path="res://scenes/menu/pause_menu.tscn" id="2_v4npb"]
+[ext_resource type="Texture2D" uid="uid://dgb0bug0p2rb" path="res://assets/textures/life_full.tres" id="3_b4d07"]
+[ext_resource type="Texture2D" uid="uid://dfnsk5asijvsu" path="res://assets/textures/life_empty.tres" id="4_kcblt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idk2r"]
+atlas = ExtResource("3_b4d07")
+region = Rect2(118, 134, 12, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6fq5"]
+atlas = ExtResource("4_kcblt")
+region = Rect2(118, 134, 12, 10)
+margin = Rect2(0.5, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkqav"]
+atlas = ExtResource("3_b4d07")
+region = Rect2(118, 134, 12, 10)
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fy771")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_v4npb")]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="MainVBox" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MainVBox"]
+layout_mode = 2
+
+[node name="Points" type="Label" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_elwtb")
+text = "0000000"
+
+[node name="Spacer" type="Container" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Life1" type="TextureRect" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_idk2r")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Life2" type="TextureRect" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_t6fq5")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Life3" type="TextureRect" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_lkqav")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Container" type="Container" parent="MarginContainer/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MessageMargin" type="MarginContainer" parent="MarginContainer/MainVBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 80
+
+[node name="Message" type="Label" parent="MarginContainer/MainVBox/MessageMargin"]
+layout_mode = 2
+theme = ExtResource("1_elwtb")
+text = "Press \"Space\" to begin"
+horizontal_alignment = 1
+uppercase = true

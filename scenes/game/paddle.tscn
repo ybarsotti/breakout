@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw08gwdb1g5cd"]
+
+[ext_resource type="Script" path="res://scenes/game/paddle.gd" id="1_8i66t"]
+[ext_resource type="Texture2D" uid="uid://ba1ek3y2ncopm" path="res://assets/sprites/more_breakout_pieces.png" id="1_po7d8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l85f"]
+size = Vector2(80, 19)
+
+[node name="Paddle" type="CharacterBody2D"]
+collision_mask = 2
+slide_on_ceiling = false
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_8i66t")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1.688)
+scale = Vector2(1, 1.211)
+texture = ExtResource("1_po7d8")
+region_enabled = true
+region_rect = Rect2(672, 272, 80, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_5l85f")
+debug_color = Color(0, 0.637905, 0.385889, 0.42)

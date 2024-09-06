@@ -1,0 +1,29 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bxkcw47s3r5ex"]
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_ebaxu"]
+resource_name = "Delay"
+tap1_level_db = -19.71
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_xv02k"]
+resource_name = "Phaser"
+range_max_hz = 970.0
+rate_hz = 0.1
+
+[resource]
+bus/0/volume_db = -0.130497
+bus/1/name = &"BGM"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectDelay_ebaxu")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectPhaser_xv02k")
+bus/1/effect/1/enabled = true
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://bal627jw2q1fk"]
+
+[ext_resource type="Script" path="res://scenes/menu/pause_menu.gd" id="1_0bfbo"]
+[ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_o1my5"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_0bfbo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.61613, 0.744119, 0.722115, 0.196078)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="PausedMessage" type="Label" parent="CenterContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_o1my5")
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_o1my5")
+text = "Resume"
+
+[node name="Main menu" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_o1my5")
+text = "Main menu"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="resume"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Main menu" to="." method="goto_main_menu"]
