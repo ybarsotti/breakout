@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var sfx: AudioStreamPlayer = $SFX
 
-const SPEED = 300.0
+var SPEED = 300.0
 
 var direction: Vector2
 
@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 			var collider = collision.get_collider()
 			if collider.has_method("destroy"):
 				collider.destroy()
+				SPEED += 3
 				SignalManager.brick_destroyed.emit(100)
 				
 			velocity = velocity.bounce(collision.get_normal())

@@ -9,7 +9,7 @@
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
+layer = -6
 follow_viewport_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
