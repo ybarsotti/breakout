@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalManager="*res://src/signal_manager.gd"
 Player="*res://src/player.gd"
+Global="*res://src/global.gd"
 
 [display]
 
@@ -57,3 +58,4 @@ start={
 2d_physics/layer_2="Ball"
 2d_physics/layer_3="Wall"
 2d_physics/layer_4="Brick"
+2d_physics/layer_5="PowerUp"

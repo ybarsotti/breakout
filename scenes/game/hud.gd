@@ -22,8 +22,8 @@ func hide_message() -> void:
 func show_message() -> void:
 	message_margin.show()
 
-func show_pause() -> void:
-	pause_menu.show()
+func toggle_pause() -> void:	
+	pause_menu.visible = !pause_menu.visible
 
 func update_points(points: int):
 	points_lbl.text = str(points).pad_zeros(6)

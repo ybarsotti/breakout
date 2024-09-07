@@ -367,57 +367,75 @@ position = Vector2(624, 216)
 
 [node name="Brick14" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(80, 232)
+powerup = 8
 
 [node name="Brick15" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(112, 232)
+powerup = 8
 
 [node name="Brick16" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(144, 232)
+powerup = 8
 
 [node name="Brick17" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(176, 232)
+powerup = 8
 
 [node name="Brick18" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(208, 232)
+powerup = 8
 
 [node name="Brick19" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(240, 232)
+powerup = 8
 
 [node name="Brick20" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(272, 232)
+powerup = 8
 
 [node name="Brick21" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(304, 232)
+powerup = 8
 
 [node name="Brick22" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(336, 232)
+powerup = 8
 
 [node name="Brick23" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(368, 232)
+powerup = 8
 
 [node name="Brick24" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(400, 232)
+powerup = 8
 
 [node name="Brick25" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(432, 232)
+powerup = 8
 
 [node name="Brick26" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(464, 232)
+powerup = 8
 
 [node name="Brick28" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(496, 232)
+powerup = 8
 
 [node name="Brick27" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(528, 232)
+powerup = 8
 
 [node name="Brick29" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(560, 232)
+powerup = 8
 
 [node name="Brick30" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(592, 232)
+powerup = 8
 
 [node name="Brick31" parent="Scene/Bricks/EigthRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(624, 232)
+powerup = 8
 
 [node name="Ball" parent="Scene" instance=ExtResource("2_3mklo")]
 position = Vector2(360, 400)

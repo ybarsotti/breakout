@@ -3,6 +3,10 @@ extends Node
 @export var lives := 3
 @export var points := 0
 
+func increase_life():
+	if lives < 3:
+		lives += 1
+
 func decrease_life():
 	lives -= 1
 	

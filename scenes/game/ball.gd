@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var sfx: AudioStreamPlayer = $SFX
 
-var SPEED = 300.0
+var INITIAL_SPEED = 300.0
+var speed = INITIAL_SPEED
 
 var direction: Vector2
 
@@ -13,14 +14,14 @@ func _ready() -> void:
 	velocity = Vector2.DOWN
 
 func _physics_process(delta: float) -> void:
-	var collision = move_and_collide(velocity * SPEED * delta)
+	var collision = move_and_collide(velocity * speed * delta)
 
 	if collision:
 		if collision.get_collider() is StaticBody2D:
 			var collider = collision.get_collider()
 			if collider.has_method("destroy"):
 				collider.destroy()
-				SPEED += 3
+				speed += 3
 				SignalManager.brick_destroyed.emit(100)
 				
 			velocity = velocity.bounce(collision.get_normal())
@@ -37,3 +38,21 @@ func move_to(n_position: Vector2) -> void:
 func missed() -> void:
 	SignalManager.ball_missed.emit()
 	queue_free()
+
+func increase_speed():
+	speed *= 2
+
+func reset_speed():
+	speed = INITIAL_SPEED
+
+func decrease_speed():
+	speed /= 2
+
+func increase_size():
+	scale *= 1.2
+
+func reset_size():
+	scale = Vector2(1, 1)
+	
+func decrease_size():
+	scale /= 1.2
