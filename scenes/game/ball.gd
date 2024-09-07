@@ -40,7 +40,7 @@ func missed() -> void:
 	queue_free()
 
 func increase_speed():
-	speed *= 2
+	speed *= 1.5
 
 func reset_speed():
 	speed = INITIAL_SPEED

@@ -20,6 +20,7 @@ func _ready() -> void:
 	SignalManager.activate_powerup.connect(activate_powerup)
 	get_tree().paused = true
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("start") and not has_started:
 		hud.hide_message()
@@ -69,34 +70,47 @@ func compute_points(points) -> void:
 	Player.add_point(points)
 	hud.update_points(Player.points)
 
+func increase_life():
+	Player.increase_life()
+	hud.update_lives(Player.lives)
+
 func activate_powerup(powerup: Global.PowerUpType):
+	#var balls = get_tree().get_nodes_in_group("balls")
 	if ball == null:
 		return
 	if powerup == Global.PowerUpType.PADDLE_SPEED_DOWN:
+		print("Paddle slow")
 		paddle.update_speed_to_half()
 		await get_tree().create_timer(5).timeout
 		paddle.set_speed_to_default()
 	if powerup == Global.PowerUpType.PADDLE_SPEED_UP:
+		print("Paddle fast")
 		paddle.set_speed_to_half_speed_more()
 		await get_tree().create_timer(5).timeout
 		paddle.set_speed_to_default()
 	if powerup == Global.PowerUpType.LIFE_UP:
-		Player.increase_life()
+		print("Life up")
+		increase_life()
 	if powerup == Global.PowerUpType.LIFE_DOWN:
+		print("Life down")
 		decrease_life()
 	if powerup == Global.PowerUpType.BALL_SPEED_UP:
+		print("Ball speed up")
 		ball.increase_speed()
 		await get_tree().create_timer(10).timeout
 		ball.reset_speed()
 	if powerup == Global.PowerUpType.BALL_SPEED_DOWN:
+		print("Ball speed down")
 		ball.decrease_speed()
 		await get_tree().create_timer(10).timeout
 		ball.reset_speed()
 	if powerup == Global.PowerUpType.BALL_SIZE_INCREASE:
+		print("Ball size increase")
 		ball.increase_size()
 		await get_tree().create_timer(10).timeout
 		ball.reset_size()
 	if powerup == Global.PowerUpType.BALL_SIZE_DECREASE:
+		print("Ball size decrease")
 		ball.decrease_size()
 		await get_tree().create_timer(10).timeout
 		ball.reset_size()
