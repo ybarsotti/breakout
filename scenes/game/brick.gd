@@ -1,3 +1,4 @@
+@tool
 extends StaticBody2D
 
 var powerup: Global.PowerUpType
@@ -36,6 +37,13 @@ func _ready():
 	define_lives()
 	define_default_color()
 	set_powerup_if_needed()
+	
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		if type == Type.NORMAL:
+			sprite_2d.region_rect = Region[color]
+		if type == Type.STRONG:
+			sprite_2d.region_rect = Region[BColor.ORANGE]
 
 func define_default_color():
 	if type == Type.NORMAL:

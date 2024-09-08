@@ -105,75 +105,57 @@ color = 1
 
 [node name="Brick14" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(80, 152)
-color = 3
 
 [node name="Brick15" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(112, 152)
-color = 3
 
 [node name="Brick16" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(144, 152)
-color = 3
 
 [node name="Brick17" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(176, 152)
-color = 3
 
 [node name="Brick18" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(208, 152)
-color = 3
 
 [node name="Brick19" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(240, 152)
-color = 3
 
 [node name="Brick20" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(272, 152)
-color = 3
 
 [node name="Brick21" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(304, 152)
-color = 3
 
 [node name="Brick22" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(336, 152)
-color = 3
 
 [node name="Brick23" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(368, 152)
-color = 3
 
 [node name="Brick24" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(400, 152)
-color = 3
 
 [node name="Brick25" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(432, 152)
-color = 3
 
 [node name="Brick26" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(464, 152)
-color = 3
 
 [node name="Brick28" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(496, 152)
-color = 3
 
 [node name="Brick27" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(528, 152)
-color = 3
 
 [node name="Brick29" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(560, 152)
-color = 3
 
 [node name="Brick30" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(592, 152)
-color = 3
 
 [node name="Brick31" parent="Scene/Bricks/SecondRow" instance=ExtResource("2_bl3i5")]
 position = Vector2(624, 152)
-color = 3
 
 [node name="ThirdRow" type="Node" parent="Scene/Bricks"]
 
