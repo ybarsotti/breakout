@@ -10,19 +10,14 @@ var direction: Vector2
 const BRICK_HIT = preload("res://assets/audio/brick_hit.ogg")
 const PADDLE_HIT = preload("res://assets/audio/paddle_hit.ogg")
 
-func _ready() -> void:
-	velocity = Vector2.DOWN
-
 func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * speed * delta)
-
 	if collision:
 		if collision.get_collider() is StaticBody2D:
 			var collider = collision.get_collider()
-			if collider.has_method("destroy"):
-				collider.destroy()
+			if collider.has_method("hit"):
+				collider.hit()
 				speed += 3
-				SignalManager.brick_destroyed.emit(100)
 				
 			velocity = velocity.bounce(collision.get_normal())
 			sfx.stream = BRICK_HIT
@@ -32,13 +27,16 @@ func _physics_process(delta: float) -> void:
 			sfx.stream = PADDLE_HIT
 		sfx.play()
 
+func serve():
+	velocity = Vector2.DOWN
+
 func move_to(n_position: Vector2) -> void:
 	position = n_position
 	
 func missed() -> void:
 	SignalManager.ball_missed.emit()
 	queue_free()
-
+	
 func increase_speed():
 	speed *= 1.5
 

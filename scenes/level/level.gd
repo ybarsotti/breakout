@@ -10,6 +10,10 @@ extends Node
 
 @onready var bgm: AudioStreamPlayer = $Scene/BGM
 
+@onready var ball_location = preload("res://scenes/game/ball.tscn")
+
+const DEFAULT_POWERUP_EXPIRATION_IN_SECONDS := 10
+
 var has_started := false
 
 func _ready() -> void:
@@ -20,10 +24,10 @@ func _ready() -> void:
 	SignalManager.activate_powerup.connect(activate_powerup)
 	get_tree().paused = true
 
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("start") and not has_started:
 		hud.hide_message()
+		ball.serve()
 		get_tree().paused = false
 		has_started = true
 	if event.is_action_pressed("pause") and has_started:
@@ -37,6 +41,9 @@ func round_lost():
 		start_new_round()
 
 func decrease_life():
+	var balls_count = get_tree().get_node_count_in_group("balls")	
+	if balls_count > 0:
+		return
 	Player.decrease_life()
 	hud.update_lives(Player.lives)
 	if Player.lives < 1:
@@ -46,10 +53,9 @@ func decrease_life():
 	return true
 
 func create_new_ball():
-	var ball_location = preload("res://scenes/game/ball.tscn")
-	ball = ball_location.instantiate()
-	scene.add_child(ball)
-	ball.move_to(ball_starting_point.position)
+	var n_ball = ball_location.instantiate()
+	scene.add_child(n_ball)
+	n_ball.move_to(ball_starting_point.position)
 
 func start_new_round():
 	get_tree().paused = true
@@ -74,10 +80,40 @@ func increase_life():
 	Player.increase_life()
 	hud.update_lives(Player.lives)
 
+func reset_ball_speed(balls):
+	for _ball in balls: 
+		_ball.reset_speed()
+
+func reset_ball_size(balls):
+	for _ball in balls: 
+		_ball.reset_size()
+		
+func increase_ball_speed(balls):
+	for _ball in balls: 
+		_ball.increase_speed()
+	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
+	reset_ball_speed(balls)
+		
+func decrease_ball_speed(balls):
+	for _ball in balls: 
+		_ball.decrease_speed()
+	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
+	reset_ball_speed(balls)
+
+func increase_ball_size(balls):
+	for _ball in balls: 
+		_ball.increase_size()
+	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
+	reset_ball_size(balls)
+
+func decrease_ball_size(balls):
+	for _ball in balls: 
+		_ball.decrease_size()
+	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
+	reset_ball_size(balls)
+	
 func activate_powerup(powerup: Global.PowerUpType):
-	#var balls = get_tree().get_nodes_in_group("balls")
-	if ball == null:
-		return
+	var balls = get_tree().get_nodes_in_group("balls")
 	if powerup == Global.PowerUpType.PADDLE_SPEED_DOWN:
 		print("Paddle slow")
 		paddle.update_speed_to_half()
@@ -96,23 +132,23 @@ func activate_powerup(powerup: Global.PowerUpType):
 		decrease_life()
 	if powerup == Global.PowerUpType.BALL_SPEED_UP:
 		print("Ball speed up")
-		ball.increase_speed()
-		await get_tree().create_timer(10).timeout
-		ball.reset_speed()
+		increase_ball_speed(balls)
 	if powerup == Global.PowerUpType.BALL_SPEED_DOWN:
 		print("Ball speed down")
-		ball.decrease_speed()
-		await get_tree().create_timer(10).timeout
-		ball.reset_speed()
+		decrease_ball_speed(balls)
 	if powerup == Global.PowerUpType.BALL_SIZE_INCREASE:
 		print("Ball size increase")
-		ball.increase_size()
-		await get_tree().create_timer(10).timeout
-		ball.reset_size()
+		increase_ball_size(balls)
 	if powerup == Global.PowerUpType.BALL_SIZE_DECREASE:
 		print("Ball size decrease")
-		ball.decrease_size()
-		await get_tree().create_timer(10).timeout
-		ball.reset_size()
+		decrease_ball_size(balls)
 	if powerup == Global.PowerUpType.BALL_MULTIPLIER:
-		print("multipricaa")
+		multiply_balls(balls)
+
+func multiply_balls(balls):
+	print("Multiply balls")
+	for _ball in balls:
+		var ball1 = ball_location.instantiate()
+		ball1.global_position = _ball.global_position
+		ball1.set_velocity(Vector2(_ball.velocity.x + 0.5, _ball.velocity.y))
+		scene.call_deferred("add_child", ball1)

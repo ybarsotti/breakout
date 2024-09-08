@@ -18,4 +18,4 @@ debug_color = Color(0.960433, 0, 0.516057, 0.42)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_n7k2n")
 region_enabled = true
-region_rect = Rect2(48, 8, 32, 16)
+region_rect = Rect2(192, 48, 32, 16)

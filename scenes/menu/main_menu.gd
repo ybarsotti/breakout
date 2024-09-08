@@ -13,10 +13,8 @@ func start() -> void:
 	bgm.stop()
 	get_tree().change_scene_to_file("res://scenes/level/level_1.tscn")
 
-
 func show_credits() -> void:
 	pass # Replace with function body.
-
 
 func goto_options() -> void:
 	bgm.stop()
