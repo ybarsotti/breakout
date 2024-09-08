@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://br84erc3ggk66"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_d36o5"]
-[ext_resource type="AudioStream" uid="uid://blw25umgsawft" path="res://assets/audio/Victory!.wav" id="2_kdfmn"]
+[ext_resource type="AudioStream" uid="uid://d4c7bcxscopkk" path="res://assets/audio/Victory_special.mp3" id="2_bgs1c"]
 [ext_resource type="PackedScene" uid="uid://bo7aoljp7u330" path="res://scenes/game/hud.tscn" id="3_1ljji"]
 [ext_resource type="PackedScene" uid="uid://bqayv5rhy02gg" path="res://scenes/game/brick.tscn" id="4_m2d6e"]
 [ext_resource type="PackedScene" uid="uid://hqvl0lathj28" path="res://scenes/game/ball.tscn" id="5_g6aiu"]
@@ -15,7 +15,7 @@ script = ExtResource("1_d36o5")
 next_level = "res://scenes/menu/winner.tscn"
 
 [node name="Win" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_kdfmn")
+stream = ExtResource("2_bgs1c")
 volume_db = -10.065
 
 [node name="HUD" parent="." instance=ExtResource("3_1ljji")]

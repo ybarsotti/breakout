@@ -1,15 +1,9 @@
 extends Control
 
+@onready var score: Label = $Score
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	score.text = "Score: " + str(Player.points).pad_zeros(6)
 
 func _on_menu_button_pressed() -> void:
 	Player.reset_all()

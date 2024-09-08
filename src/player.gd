@@ -2,7 +2,8 @@ extends Node
 
 @export var lives := 3
 @export var points := 0
-@export var elapsed_time := 0
+var minutes = 0
+var seconds = 0
 
 func increase_life():
 	if lives < 3:

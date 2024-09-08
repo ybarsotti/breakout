@@ -9,6 +9,10 @@ extends Control
 @onready var message_margin: MarginContainer = $MarginContainer/MainVBox/MessageMargin
 @onready var pause_menu: CanvasLayer = $PauseMenu
 
+@onready var clock_timer: Timer = $ClockTimer
+@onready var timer_counter: Label = $MarginContainer/MainVBox/HBoxContainer/CenterContainer/TimerCounter
+var minutes = 0
+var seconds = 0
 const LIFE_FULL_REGION := Rect2(118, 134, 12, 10)
 const LIFE_EMPTY_REGION := Rect2(130, 134, 12, 10)
 
@@ -36,3 +40,14 @@ func update_lives(new_life_count: int):
 		else:
 			new_region = LIFE_EMPTY_REGION
 		LIFE_TEXTURE_LIST[life_texture_idx].texture.region = new_region
+
+func _on_clock_timer_timeout() -> void:
+	if seconds == 60:
+		minutes += 1
+		seconds = -1
+	seconds += 1
+	timer_counter.text = str("%02d" % minutes) + ":" + str("%02d" % seconds)
+
+func reset_clock_timer():
+	minutes = 0
+	seconds = 0

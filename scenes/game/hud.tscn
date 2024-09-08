@@ -26,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_elwtb")
 script = ExtResource("1_fy771")
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_v4npb")]
@@ -56,6 +57,17 @@ theme = ExtResource("1_elwtb")
 text = "0000000"
 
 [node name="Spacer" type="Container" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/MainVBox/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerCounter" type="Label" parent="MarginContainer/MainVBox/HBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "00:00"
+
+[node name="Spacer2" type="Container" parent="MarginContainer/MainVBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -92,3 +104,9 @@ theme = ExtResource("1_elwtb")
 text = "Press \"Space\" to begin"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="ClockTimer" type="Timer" parent="."]
+process_mode = 1
+autostart = true
+
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
