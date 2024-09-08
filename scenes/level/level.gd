@@ -11,10 +11,14 @@ extends Node
 @onready var bgm: AudioStreamPlayer = $Scene/BGM
 
 @onready var ball_location = preload("res://scenes/game/ball.tscn")
+@onready var win: AudioStreamPlayer = $Win
+
+@export var next_level: String
 
 const DEFAULT_POWERUP_EXPIRATION_IN_SECONDS := 10
 
 var has_started := false
+var can_receive_input := true
 
 func _ready() -> void:
 	SignalManager.resume_game.connect(resume_game)
@@ -25,6 +29,8 @@ func _ready() -> void:
 	get_tree().paused = true
 
 func _input(event: InputEvent) -> void:
+	if not can_receive_input:
+		return
 	if event.is_action_pressed("start") and not has_started:
 		hud.hide_message()
 		ball.serve()
@@ -54,6 +60,7 @@ func decrease_life():
 
 func create_new_ball():
 	var n_ball = ball_location.instantiate()
+	ball = n_ball
 	scene.add_child(n_ball)
 	n_ball.move_to(ball_starting_point.position)
 
@@ -73,47 +80,53 @@ func goto_main_menu():
 	get_tree().change_scene_to_file("res://scenes/menu/main_menu.tscn")
 
 func compute_points(points) -> void:
+	var brick_count = get_tree().get_node_count_in_group("bricks")
 	Player.add_point(points)
 	hud.update_points(Player.points)
+	if brick_count == 0:
+		get_tree().paused = true
+		can_receive_input = false
+		win.play()
+		await win.finished
+		get_tree().change_scene_to_file(next_level)
 
 func increase_life():
 	Player.increase_life()
 	hud.update_lives(Player.lives)
 
-func reset_ball_speed(balls):
-	for _ball in balls: 
+func reset_ball_speed():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.reset_speed()
 
-func reset_ball_size(balls):
-	for _ball in balls: 
+func reset_ball_size():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.reset_size()
-		
-func increase_ball_speed(balls):
-	for _ball in balls: 
+
+func increase_ball_speed():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.increase_speed()
 	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
-	reset_ball_speed(balls)
-		
-func decrease_ball_speed(balls):
-	for _ball in balls: 
+	reset_ball_speed()
+
+func decrease_ball_speed():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.decrease_speed()
 	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
-	reset_ball_speed(balls)
+	reset_ball_speed()
 
-func increase_ball_size(balls):
-	for _ball in balls: 
+func increase_ball_size():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.increase_size()
 	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
-	reset_ball_size(balls)
+	reset_ball_size()
 
-func decrease_ball_size(balls):
-	for _ball in balls: 
+func decrease_ball_size():
+	for _ball in get_tree().get_nodes_in_group("balls"): 
 		_ball.decrease_size()
 	await get_tree().create_timer(DEFAULT_POWERUP_EXPIRATION_IN_SECONDS).timeout
-	reset_ball_size(balls)
-	
-func activate_powerup(powerup: Global.PowerUpType):
-	var balls = get_tree().get_nodes_in_group("balls")
+	reset_ball_size()
+
+func activate_powerup(powerup: Global.PowerUpType):	
 	if powerup == Global.PowerUpType.PADDLE_SPEED_DOWN:
 		print("Paddle slow")
 		paddle.update_speed_to_half()
@@ -132,22 +145,22 @@ func activate_powerup(powerup: Global.PowerUpType):
 		decrease_life()
 	if powerup == Global.PowerUpType.BALL_SPEED_UP:
 		print("Ball speed up")
-		increase_ball_speed(balls)
+		increase_ball_speed()
 	if powerup == Global.PowerUpType.BALL_SPEED_DOWN:
 		print("Ball speed down")
-		decrease_ball_speed(balls)
+		decrease_ball_speed()
 	if powerup == Global.PowerUpType.BALL_SIZE_INCREASE:
 		print("Ball size increase")
-		increase_ball_size(balls)
+		increase_ball_size()
 	if powerup == Global.PowerUpType.BALL_SIZE_DECREASE:
 		print("Ball size decrease")
-		decrease_ball_size(balls)
+		decrease_ball_size()
 	if powerup == Global.PowerUpType.BALL_MULTIPLIER:
-		multiply_balls(balls)
+		multiply_balls()
 
-func multiply_balls(balls):
+func multiply_balls():
 	print("Multiply balls")
-	for _ball in balls:
+	for _ball in get_tree().get_nodes_in_group("balls"):
 		var ball1 = ball_location.instantiate()
 		ball1.global_position = _ball.global_position
 		ball1.set_velocity(Vector2(_ball.velocity.x + 0.5, _ball.velocity.y))

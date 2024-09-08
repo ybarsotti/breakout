@@ -1,0 +1,258 @@
+[gd_scene load_steps=9 format=3 uid="uid://br84erc3ggk66"]
+
+[ext_resource type="Script" path="res://scenes/level/level.gd" id="1_d36o5"]
+[ext_resource type="AudioStream" uid="uid://blw25umgsawft" path="res://assets/audio/Victory!.wav" id="2_kdfmn"]
+[ext_resource type="PackedScene" uid="uid://bo7aoljp7u330" path="res://scenes/game/hud.tscn" id="3_1ljji"]
+[ext_resource type="PackedScene" uid="uid://bqayv5rhy02gg" path="res://scenes/game/brick.tscn" id="4_m2d6e"]
+[ext_resource type="PackedScene" uid="uid://hqvl0lathj28" path="res://scenes/game/ball.tscn" id="5_g6aiu"]
+[ext_resource type="PackedScene" uid="uid://cw08gwdb1g5cd" path="res://scenes/game/paddle.tscn" id="6_e1wqm"]
+[ext_resource type="PackedScene" uid="uid://crp3fgp8lfv2y" path="res://scenes/game/base_scenario.tscn" id="7_1yawj"]
+[ext_resource type="AudioStream" uid="uid://bdg5pdwvrge32" path="res://assets/audio/level_3.ogg" id="8_tlwja"]
+
+[node name="Level_3" type="Node"]
+process_mode = 3
+script = ExtResource("1_d36o5")
+next_level = "res://scenes/menu/winner.tscn"
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kdfmn")
+volume_db = -10.065
+
+[node name="HUD" parent="." instance=ExtResource("3_1ljji")]
+
+[node name="Markers" type="Node" parent="."]
+
+[node name="PaddleStartingPoint" type="Marker2D" parent="Markers"]
+position = Vector2(360, 464)
+
+[node name="BallStartingPoint" type="Marker2D" parent="Markers"]
+position = Vector2(360, 400)
+
+[node name="Scene" type="Node" parent="."]
+process_mode = 1
+
+[node name="Bricks" type="CanvasGroup" parent="Scene"]
+
+[node name="FirstRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick8" parent="Scene/Bricks/FirstRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 144)
+type = 1
+
+[node name="Brick9" parent="Scene/Bricks/FirstRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 144)
+
+[node name="Brick10" parent="Scene/Bricks/FirstRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 144)
+
+[node name="Brick11" parent="Scene/Bricks/FirstRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 144)
+type = 1
+
+[node name="SecondRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick19" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(264, 160)
+color = 4
+type = 1
+
+[node name="Brick20" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 160)
+
+[node name="Brick21" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 160)
+
+[node name="Brick24" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 160)
+
+[node name="Brick25" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 160)
+
+[node name="Brick26" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 160)
+
+[node name="Brick28" parent="Scene/Bricks/SecondRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(456, 160)
+color = 4
+type = 1
+
+[node name="ThirdRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick17" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(232, 176)
+color = 1
+type = 1
+
+[node name="Brick18" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(264, 176)
+
+[node name="Brick19" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 176)
+
+[node name="Brick20" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 176)
+
+[node name="Brick24" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 176)
+
+[node name="Brick25" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 176)
+
+[node name="Brick26" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 176)
+
+[node name="Brick28" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(456, 176)
+
+[node name="Brick29" parent="Scene/Bricks/ThirdRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(488, 176)
+color = 1
+type = 1
+
+[node name="FourthRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick15" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(200, 192)
+color = 2
+type = 1
+
+[node name="Brick16" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(232, 192)
+
+[node name="Brick17" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(264, 192)
+
+[node name="Brick18" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 192)
+
+[node name="Brick19" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 192)
+
+[node name="Brick20" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 192)
+
+[node name="Brick21" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 192)
+
+[node name="Brick24" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 192)
+
+[node name="Brick25" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(456, 192)
+
+[node name="Brick26" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(488, 192)
+
+[node name="Brick28" parent="Scene/Bricks/FourthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(520, 192)
+color = 2
+type = 1
+
+[node name="FifthRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick16" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(232, 208)
+color = 2
+type = 1
+
+[node name="Brick17" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(264, 208)
+
+[node name="Brick18" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 208)
+
+[node name="Brick19" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 208)
+
+[node name="Brick20" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 208)
+
+[node name="Brick21" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 208)
+
+[node name="Brick24" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 208)
+
+[node name="Brick25" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(456, 208)
+
+[node name="Brick26" parent="Scene/Bricks/FifthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(488, 208)
+color = 2
+type = 1
+
+[node name="SixthRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick16" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 240)
+color = 4
+type = 1
+
+[node name="Brick17" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 240)
+
+[node name="Brick18" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 240)
+
+[node name="Brick19" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 240)
+
+[node name="Brick20" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 240)
+color = 4
+type = 1
+
+[node name="Brick21" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(264, 224)
+type = 1
+
+[node name="Brick22" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(296, 224)
+
+[node name="Brick28" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 224)
+
+[node name="Brick27" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 224)
+
+[node name="Brick29" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 224)
+
+[node name="Brick30" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(424, 224)
+
+[node name="Brick31" parent="Scene/Bricks/SixthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(456, 224)
+type = 1
+
+[node name="EigthRow" type="Node" parent="Scene/Bricks"]
+
+[node name="Brick20" parent="Scene/Bricks/EigthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(328, 256)
+color = 4
+type = 1
+
+[node name="Brick21" parent="Scene/Bricks/EigthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(360, 256)
+color = 4
+type = 1
+
+[node name="Brick22" parent="Scene/Bricks/EigthRow" instance=ExtResource("4_m2d6e")]
+position = Vector2(392, 256)
+color = 4
+type = 1
+
+[node name="Ball" parent="Scene" instance=ExtResource("5_g6aiu")]
+position = Vector2(360, 400)
+
+[node name="Paddle" parent="Scene" instance=ExtResource("6_e1wqm")]
+position = Vector2(360, 464)
+
+[node name="BaseScenario" parent="Scene" instance=ExtResource("7_1yawj")]
+
+[node name="BGM" type="AudioStreamPlayer" parent="Scene"]
+stream = ExtResource("8_tlwja")
+volume_db = -25.297
+autoplay = true
+bus = &"BGM"
+parameters/looping = true

@@ -79,8 +79,8 @@ func set_powerup(n_powerup: Global.PowerUpType):
 	powerup = n_powerup
 
 func set_powerup_if_needed():
-	if true:
-		powerup = Global.PowerUpType.BALL_MULTIPLIER
+	if should_have_powerup():
+		powerup = get_random_powerup()
 	else:
 		powerup = Global.PowerUpType.NONE
 

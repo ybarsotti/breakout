@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhuahhxfy3sm6"]
+
+[ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_0hq4n"]
+[ext_resource type="Script" path="res://scenes/menu/winner.gd" id="2_hjc4q"]
+
+[node name="Winner" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_0hq4n")
+script = ExtResource("2_hjc4q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(7.5084e-06, 0.644903, 0.306751, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 136.0
+offset_right = 150.0
+offset_bottom = 217.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "BROKE OUT"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 256.0
+offset_right = 264.0
+offset_bottom = 280.0
+text = "Score: "
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 296.0
+offset_right = 280.0
+offset_bottom = 320.0
+text = "Time:"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -104.0
+offset_right = 56.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Main Menu"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

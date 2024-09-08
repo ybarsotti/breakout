@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl425lmo46fv4"]
+[gd_scene load_steps=9 format=3 uid="uid://dl425lmo46fv4"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_mo5ty"]
 [ext_resource type="PackedScene" uid="uid://crp3fgp8lfv2y" path="res://scenes/game/base_scenario.tscn" id="1_ud26q"]
@@ -6,11 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://hqvl0lathj28" path="res://scenes/game/ball.tscn" id="2_3mklo"]
 [ext_resource type="PackedScene" uid="uid://cw08gwdb1g5cd" path="res://scenes/game/paddle.tscn" id="2_0375l"]
 [ext_resource type="PackedScene" uid="uid://bqayv5rhy02gg" path="res://scenes/game/brick.tscn" id="2_bl3i5"]
+[ext_resource type="AudioStream" uid="uid://blw25umgsawft" path="res://assets/audio/Victory!.wav" id="2_qnary"]
 [ext_resource type="AudioStream" uid="uid://bpnnv6okvdu4m" path="res://assets/audio/level_1.ogg" id="5_iimjg"]
 
 [node name="Level_1" type="Node"]
 process_mode = 3
 script = ExtResource("1_mo5ty")
+next_level = "res://scenes/level/level_2.tscn"
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qnary")
+volume_db = -10.065
 
 [node name="HUD" parent="." instance=ExtResource("1_uvjfg")]
 

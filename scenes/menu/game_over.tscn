@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmp3tufcdsesi"]
+[gd_scene load_steps=4 format=3 uid="uid://dmp3tufcdsesi"]
 
 [ext_resource type="Theme" uid="uid://nt4j5d2rkglf" path="res://assets/themes/main.tres" id="1_b62on"]
 [ext_resource type="Script" path="res://scenes/menu/game_over.gd" id="1_v1dlv"]
+[ext_resource type="AudioStream" uid="uid://ql6qisbbqtob" path="res://assets/audio/lose.mp3" id="3_etmuh"]
 
 [node name="GameOver" type="CanvasLayer"]
 layer = 15
@@ -53,5 +54,10 @@ text = "HighScore: "
 layout_mode = 2
 theme = ExtResource("1_b62on")
 text = "Main menu"
+
+[node name="lost" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_etmuh")
+volume_db = -16.308
+autoplay = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenuBtn" to="." method="to_main_menu"]
